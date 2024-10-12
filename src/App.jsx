@@ -5,7 +5,7 @@ import defaultOptions from "./configs/reactQuery";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 function App() {
   const queryClient = new QueryClient({
-    defaultOptions,
+    defaultOptions, 
   });
   return (
     <QueryClientProvider client={queryClient}>
