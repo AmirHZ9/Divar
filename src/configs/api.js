@@ -8,8 +8,7 @@ const api = axios.create({
   },
 });
 
-api.interceptors.request.use(
-  (request) => {
+api.interceptors.request.use((request) => {
     const token = getCookie("accessToken");
 
     if (token) {
