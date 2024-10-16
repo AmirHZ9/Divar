@@ -6,7 +6,7 @@ import PageNotFound from "../pages/404";
 import AuthPage from "../pages/AuthPage";
 import AdminPage from "../pages/AdminPage";
 import Dashboard from "../pages/Dashboard";
-import getUserProfile from "../services/user";
+import {getUserProfile} from "../services/user";
 
 function Router() {
   const { data, isLoading, error } = useQuery(["profile"], getUserProfile);

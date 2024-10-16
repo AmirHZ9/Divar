@@ -1,8 +1,13 @@
 import React from 'react'
+import AddPost from '../components/templates/AddPost'
+import PostList from '../components/templates/PostList'
 
 function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <div>
+      <AddPost/>
+      <PostList/>
+    </div>
   )
 }
 

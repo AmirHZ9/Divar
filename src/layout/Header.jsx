@@ -23,7 +23,7 @@ function Header() {
           <span>دیوار من</span>
         </Link>
         <div className="mr-5">
-          <Link className="/dashboard bg-base text-white rounded-lg p-4 py-2" >ثبت اگهی</Link>
+          <Link to="/dashboard" className=" bg-base text-white rounded-lg p-4 py-2" >ثبت اگهی</Link>
         </div>
       </div>
         </div>

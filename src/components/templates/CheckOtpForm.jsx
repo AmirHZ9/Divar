@@ -3,7 +3,7 @@ import { checkOtp } from "services/auth";
 import { setCookie } from "../../utils/cookie";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import getUserProfile from "../../services/user";
+import {getUserProfile} from "../../services/user";
 
 function CheckOtpForm({ mobile, code, setCode, setStep }) {
   const navigat = useNavigate();
