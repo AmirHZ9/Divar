@@ -6,7 +6,8 @@ import PageNotFound from "../pages/404";
 import AuthPage from "../pages/AuthPage";
 import AdminPage from "../pages/AdminPage";
 import Dashboard from "../pages/Dashboard";
-import {getUserProfile} from "../services/user";
+import { getUserProfile } from "../services/user";
+import PostDetails from "../pages/PostDetails";
 
 function Router() {
   const { data, isLoading, error } = useQuery(["profile"], getUserProfile);
@@ -33,6 +34,7 @@ function Router() {
         path="/authPage"
         element={!data ? <AuthPage /> : <Navigate to="/dashboard" />}
       />
+      <Route path="/post/:id" element={<PostDetails />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

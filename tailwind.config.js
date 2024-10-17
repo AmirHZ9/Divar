@@ -19,7 +19,8 @@ module.exports = {
     },
     colors: {
        base:"#a62626",
-       white:"#fff"
+       white:"#fff",
+       gray:"#A9A9A9	",
     },
     fontFamily: {
    
