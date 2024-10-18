@@ -1,17 +1,22 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { deleteCategory, getAllCategory } from "../../services/admin";
+import Loader from "../modules/Loader";
+import toast from "react-hot-toast";
 
 function AllCategoryAdmin() {
   const queryClient = useQueryClient();
   const { data, isLoading, error } = useQuery(["category"], getAllCategory);
   const { mutate } = useMutation(deleteCategory, {
-    onSuccess: () => queryClient.invalidateQueries("category"),
+    onSuccess: () => {
+      queryClient.invalidateQueries("category");
+      toast.error("دسته بندی با موفقیت حذف شد.");
+    },
   });
   const deleteHandler = (id) => {
     mutate(id);
   };
 
-  if (isLoading) return <h1>Loading</h1>;
+  if (isLoading) return <Loader />;
   return (
     <div className="">
       {data.data.map((item) => (

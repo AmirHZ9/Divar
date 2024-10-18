@@ -1,15 +1,21 @@
 import { useState } from "react";
-import styles from "../styles/adminPage.module.css";
-import { createCategory } from "../services/admin";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
+
+import styles from "../styles/adminPage.module.css";
+
+import { createCategory } from "../services/admin";
 import AllCategoryAdmin from "../components/templates/AllCategoryAdmin";
+
 function AdminPage() {
   const queryClient = useQueryClient();
   const [form, setForm] = useState({ name: "", slug: "", icon: "" });
-  const { mutate, isLoading, error, data } = useMutation(createCategory, {
-    onSuccess: () =>{ queryClient.invalidateQueries("category");
-    setForm({ name: "", slug: "", icon: "" });}
-
+  const { mutate } = useMutation(createCategory, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("category");
+      toast.success("دسته بندی با موفقیت ایجاد شد.");
+      setForm({ name: "", slug: "", icon: "" });
+    },
   });
 
   const submitHandler = (e) => {
@@ -17,21 +23,16 @@ function AdminPage() {
     if (!form.name || !form.slug || !form.icon) return;
 
     mutate(form);
-
   };
   const changeHandler = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });  
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   return (
     <div className="container mx-auto">
       <AllCategoryAdmin />
-      {data?.data && (
-        <p className="w-full bg-base text-white text-center rounded-md p-3">
-          دسته بندی جدید با موفقیت شد
-        </p>
-      )}
-      <form  onSubmit={submitHandler}>
+
+      <form onSubmit={submitHandler}>
         <h2 className="font-bold border-base border-b-2 border-solid w-fit mt-10">
           دسته بندی جدید
         </h2>

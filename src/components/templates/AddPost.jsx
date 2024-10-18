@@ -48,17 +48,17 @@ function AddPost() {
           Authorization: `bearer ${token}`,
         },
       })
-      .then((res) => 
-        toast.success(res.data.message),
-      setForm({
-        title: "",
-        content: "",
-        amount: "",
-        category: null,
-        images: null,
-      })
-    )
-      .catch(toast.error("مشکلی پیش امده"));
+      .then(
+        (res) => toast.success(res.data.message),
+        setForm({
+          title: "",
+          content: "",
+          amount: "",
+          category: null,
+          images: null,
+        })
+      )
+      .catch((error)=>toast.error("مشکلی پیش امده"));
   };
   return (
     <div>
@@ -130,8 +130,6 @@ function AddPost() {
           ایجاد
         </button>
       </form>
-      
-
     </div>
   );
 }

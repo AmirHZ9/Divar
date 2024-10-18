@@ -6,8 +6,10 @@ const getUserProfile = () => {
 const getUserPosts = () => {
   return api.get("post/my");
 };
-
+const deleteUserPost = (id)=>{
+  return api.delete(`post/delete/${id}`)
+}
 const getAllPosts = () => {
   return api.get("");
 };
-export { getUserProfile, getUserPosts, getAllPosts };
+export { getUserProfile, getUserPosts, getAllPosts,deleteUserPost };

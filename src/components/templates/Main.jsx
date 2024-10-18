@@ -1,13 +1,11 @@
-import { getAllCategory } from "../../services/admin";
-import { useQuery } from "@tanstack/react-query";
-import { getAllPosts } from "../../services/user";
+
 import { sp } from "../../utils/numbers";
+import Loader from "../modules/Loader";
 import styles from "../styles/main.module.css"
 import { Link } from "react-router-dom";
-function Main() {
-  const { data, isLoading } = useQuery(["All-Posts"], getAllPosts);
+function Main({data,isLoading}) {
 
-  if (isLoading) return <h3>LOADING</h3>;
+  if (isLoading) return  <Loader/>;
   return (
     <div className="grid grid-cols-12 gap-5">
       {data?.data.posts.map((item) => (
