@@ -15,10 +15,10 @@ function HomePage() {
 
   return (
     <div className="container mx-auto grid grid-cols-12">
-      <div className="col-span-2">
+      <div className="col-span-12 tabletPro:col-span-2">
         <SideBar data={categories} isLoading={categoryLoading} />
       </div>
-      <div className="col-span-10">
+      <div className="col-span-12 tabletPro:col-span-10">
         <Main data={posts} isLoading={isLoading} />
       </div>
     </div>
